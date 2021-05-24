@@ -1,0 +1,24 @@
+name: Test
+
+on:
+  push:
+
+jobs:
+  lint:
+    name: Linting
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
+        with:
+          python-version: "3.8"
+      - uses: actions/cache@v2
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-
+      - name: Install Dependencies
+        run: pip install -r requirements.txt && pip install pylint
+      - name: Lint Test
+        run: git ls-files -- '*.py' | xargs pylint --disable=C,R
