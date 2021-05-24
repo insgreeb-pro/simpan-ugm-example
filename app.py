@@ -14,11 +14,7 @@ client = Client(options)
 # Try to upload file
 remote_dir = "/example"
 remote_path = "/example/a.txt"
-local_path = "temp.txt"
-
-# generate file
-with open(local_path, "w") as f :
-  f.writelines("Hello from local storage")
+local_path = "example.txt"
 
 # Upload File
 print("Upload File:", "\n" + "-"*10)
@@ -45,18 +41,16 @@ client.download(
 print("Download done.")
 
 # Read downloaded file
-print("Read downloaded file:")
+print("Read downloaded file:\n")
 with open(local_download_path, "r") as f:
-  data = f.read()
-  print(data)
+    data = f.read()
+    print(data)
 
 
-print("\n Cleanup.")
+print("\nCleanup.")
 # Remove file on remote
 client.clean(remote_path)
 client.clean(remote_dir)
 
 # Remove generated and downloaded file
-os.unlink(local_path)
 os.unlink(local_download_path)
-
