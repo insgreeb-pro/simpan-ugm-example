@@ -1,6 +1,6 @@
 # Program Python
 
-Program python untuk: ...
+Contoh program python untuk uplaod dan download file ke [simpan.ugm.ac.id](https://simpan.ugm.ac.id) menggunakan python.
 
 ## Install Library
 
